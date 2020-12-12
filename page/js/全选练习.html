@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选练习</title>
+</head>
+<body>
+<form action="" method="post">
+    你的爱好是？<input type="checkbox" id="checkedAllBox">全选/全不选
+    <br>
+    <input type="checkbox" name="items" value="足球"> 足球
+    <input type="checkbox" name="items" value="篮球"> 篮球
+    <input type="checkbox" name="items" value="羽毛球"> 羽毛球
+    <input type="checkbox" name="items" value="乒乓球"> 乒乓球
+
+    <br>
+    <input type="button" id="checkedAllBtn" value="全选">
+    <input type="button" id="checkedNoBtn" value="全不选">
+    <input type="button" id="checkedRevBtn" value="反选">
+    <input type="button" id="sendBtn" value="提交">
+</form>
+</body>
+<script>
+    var checkedAllBox = document.getElementById("checkedAllBox");
+    var items = document.getElementsByName("items");
+    var checkedRevBtn = document.getElementById("checkedRevBtn");
+    //反选
+    checkedRevBtn.onclick = function () {
+        checkedAllBox.checked = true;
+        for (let i = 0; i < items.length; i++) {
+
+            items[i].checked = !items[i].checked;
+            if (!items[i].checked){
+                checkedAllBox.checked = false;
+            }
+        }
+
+    };
+    // 全选/反选
+    checkedAllBox.onclick = function () {
+        for (let i = 0; i < items.length; i++) {
+            items[i].checked = this.checked;
+
+        }
+    };
+
+    //为四个多选框分别绑定函数，来控制全选框
+    for (let i = 0; i < items.length; i++) {
+        items[i].onclick = function () {
+            checkedAllBox.checked = true;
+            for (let j = 0; j < items.length; j++) {
+                if (!items[j].checked) {
+                    checkedAllBox.checked = false;
+                    break;
+                }
+
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的call()和apply()</title>
+    <script>
+        function f() {
+            alert(this)
+        }
+
+        var obj = {};
+        f();
+        f.call(obj);
+        f.apply(obj);
+    </script>
+</head>
+<body>
+call()和apply()的this指的是参数
+</body>
+</html>

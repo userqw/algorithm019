@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM文档对象模型</title>
+</head>
+<body>
+js通过DOM来对HTML文件操作
+
+<button id ="btn" name="btn">this is a button</button>
+<script>
+    /** 浏览器已经为我们提供了文档节点对象，这个
+     * 对象是window属性，可以在页面中直接使用，文档节点代表整个网页
+     */
+    console.log(document);
+    var btn = document.getElementById("btn");
+    console.log(btn);
+    console.log(btn.innerHTML);
+    btn.innerHTML = "Button";
+
+//    获取元素节点
+    document.getElementById("btn");
+    document.getElementsByName("btn");
+    //返回一个类数组对象
+    document.getElementsByTagName("button");
+
+</script>
+</body>
+</html>

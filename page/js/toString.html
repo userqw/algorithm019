@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>toString</title>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        var per = new Person("张三", 18);
+        console.log(per);
+        console.log(per.toString());
+
+        per.toString = function () {
+            return "重写toString";
+        }
+        console.log(per.toString());
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

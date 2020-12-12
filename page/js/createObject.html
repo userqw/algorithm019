@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用工厂的方式创建对象</title>
+
+    <script>
+        /**
+         *
+         * 创建对象
+         */
+        var obj = {
+            name : "张三",
+            age : 18,
+            sayName:function () {
+                alert(this.name);
+            }
+        };
+        var obj2 = {
+            name : "李四",
+            age : 28,
+            sayName:function () {
+                alert(this.name);
+            }
+        };
+
+        /*
+        * 使用工厂函数创建对象*/
+    //    由于上述创建对象中具有大量重复代码
+    //    故使用工厂的模式创建对象
+        function createPerson() {
+            //创建对象
+            var obj = new Object();
+            //向对象总添加属性
+            obj.name = "王五";
+            return obj;
+        }
+
+        var obj3 = createPerson();
+        console.log(obj3)
+
+        /**
+         * 构造函数创建对象
+         */
+        function createPerson1(name) {
+            var obj = new Object();
+            obj.name = name;
+            return obj;
+        }
+        var obj4 = createPerson1("钱其")
+        console.log(obj4);
+
+        console.log(obj4 instanceof createPerson1);
+
+        function person(name) {
+            this.name = name;
+            this.sayName = function () {
+                alert(this.name);
+            }
+        }
+
+        var obj5 = new person("孙八");
+        console.log(obj5 instanceof person);
+
+        function sayName(obj) {
+            alert(obj.name);
+        }
+        function person2(name) {
+            this.name = name;
+            this.sayName = sayName(this);
+        }
+
+        var obj6 = new person2("test");
+        console.log(obj6);
+    </script>
+</head>
+<body>
+    this的总结
+    1 当以函数的形式调用时，this 是windows
+    2 当以方法的形式调用时， 谁调用方法this就是谁
+    3 当以构造函数的形式调用时，this就是创建时的那个对象
+</body>
+</html>

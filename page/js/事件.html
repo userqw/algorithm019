@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+</head>
+<body>
+
+    <button id="btn">this is a button</button>
+    <script>
+        /**
+         * 用户与浏览器交互的行为即事件，
+         * 在事件对于的属性中设置js
+         */
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            alert("点击事件")
+        }
+    </script>
+</body>
+</html>

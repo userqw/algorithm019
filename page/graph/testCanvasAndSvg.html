@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .a {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="a">Hello imooc!</div>
+<!--canvas画布，画布中的元素无法被浏览器选中-->
+<canvas id="canvas" width="200" height="200"></canvas>
+<!--svg绘图  矢量图-->
+<div>
+    <svg width="200" height="200">
+        <rect x="0" y="0" width="100" height="100" fill="yellow"></rect>
+        <line x1="100" y1="0" x2="200" y2="100" stroke="green" stroke-width="1"></line>
+        <!--   多边形     -->
+        <polygon points="0,100 0,200 100,200" fill="blue"></polygon>
+        <circle r="50" cx="150" cy="150" stroke-width="1" stroke="green" fill="pink"></circle>
+    </svg>
+</div>
+
+
+<!--canvas绘图-->
+<script>
+    const canvas = document.getElementById('canvas');
+    //2d绘图
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'red';
+
+    //矩形(x,y,w,h)起点坐标（x,y）宽高（w,h）
+    ctx.fillRect(0, 0, 100, 100);
+
+
+    //画布上画一条线
+    ctx.strokeStyle = 'green';
+    ctx.beginPath();
+    //线的起点
+    ctx.moveTo(100, 0);
+    //线的终点
+    ctx.lineTo(200, 100);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(0, 100);
+    ctx.lineTo(0, 200);
+    ctx.lineTo(100, 200);
+    ctx.closePath();
+    //颜色填充
+    ctx.fill();
+
+
+    //绘制圆形
+    ctx.beginPath();
+    //圆心位置，半径
+    ctx.arc(150, 150, 50, 0, 2 * Math.PI);//Math.PI=180度
+    ctx.fill();
+    ctx.stroke();//fill颜色填充，stroke 边框
+    ctx.closePath();
+</script>
+<!--canvas绘图-->
+
+
+</body>
+</html>

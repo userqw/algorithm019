@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.0.0/dist/echarts.min.js"></script>
+    <style>
+        #chart {
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+<div id="chart"></div>
+<script>
+    const chartDom = document.getElementById('chart');
+    const chart = echarts.init(chartDom);
+    chart.setOption({
+        title:{
+            text : 'echarts学习'
+        },
+        //x轴
+        xAxis:{
+            data : ['首饰','化妆品','包包','服装']
+        },
+        yAxis:{},
+        series:{
+            type:'bar',//柱状图
+            // type :'line',//折线图
+            data: [100,80,150,200]
+        }
+    })
+</script>
+
+</body>
+</html>

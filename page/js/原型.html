@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+    <script>
+        function Person() {
+
+        }
+        console.log(Person.prototype);
+
+        var obj1 = new Person();
+        var obj2 = new Person();
+        console.log(obj1.__proto__ == obj2.__proto__);//true
+        console.log(obj1.__proto__ == Person.prototype);//true
+
+        //向原型对象（公共区域）添加属性
+        Person.prototype.a=123;
+        console.log(obj1.a);
+
+
+
+
+        function Dog(name){
+            this.name = name;
+        }
+        Dog.prototype.sayName = function () {
+            alert("Hello:" + this.name);
+        }
+        var dog1 = new Dog("圆圆");
+        var dog2 = new Dog("点点");
+        dog1.sayName();
+        dog2.sayName();
+    </script>
+</head>
+<body>
+原型prototype
+我们创建的每一个函数，解析器都会向函数中添加一个属性prototype
+这个属性对应着一个对象，这个对象就是原型对象
+如果函数作为普通函数调用，那么prototype没有任何作用
+如果作为构造函数调用，它所创建的对象中都会有一个隐含的属性
+指向构造函数的原型对象，通过__proto__来访问
+
+原型对象相当于一个公共的区域，索引同一个类的实例都可以访问到这个原型对象
+我们可以将对象中共有的内容设置到原型对象中
+
+
+当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用
+如果没有会去原型对象中寻找，如果有直接使用
+
+</body>
+</html>

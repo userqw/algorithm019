@@ -1,0 +1,83 @@
+第六周总结
+
+动态规划Dynamic programming
+
+分治+回溯+递归+动态规划
+
+
+递归模板
+
+public void recur(int level,int param){
+
+    //terminator递归终止条件
+    if(level>MAX_LEVEL){
+    //process result
+        return;
+    }
+
+    //process current logic 处理当前层逻辑
+    process(level,param);
+
+    //drill down递归到下一层
+    recur(level:level+1,newParam);
+
+    //restore current status恢复当前状态
+
+}
+
+分治
+分治是递归的一种特殊形式
+
+模板
+private static int divide_conquer(Problem problem){
+    //递归终止条件
+    if(problem == NULL){
+        int res = process_last_result();
+        return res;
+    }
+    //拆分子问题
+    subProblems = split_problem(problem)
+    //调递归函数
+    res0 = divide_conquer(subProblems[0])
+    res1 = divide_conquer(subProblems[1])
+    //合并结果
+    result = process_result(res0,res1);
+    return result;
+    //合并当前层状态
+}
+
+
+动态规划关键点
+动态规划和递归或者分治没有跟不上的区别（关键看有无最优的子结构）
+共性：找到重复的子问题
+差异性：最优子结构 中途可以淘汰次优解
+
+动态规划关键点
+1最优子结构 opt[n] = best_of(opt[n-1],opt[n-2],...)
+2存储中间状态：opt[i]
+3递推公式（dp方程）
+fib opt[i] =opt[n-1]+opt[n-2]
+二维路径：opt[i,j] = opt[i+1][j]+opt[i][j+1](且判断a[i,j]是否为空地)
+
+
+动态规划小结
+1打破自己的思维惯性，形成机器思维
+2理解复杂逻辑的关键
+3职业进阶的要点要领
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

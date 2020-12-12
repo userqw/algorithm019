@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串和正则表达式</title>
+    <script>
+        var str = "1a2b3c4d5e6f7";
+        var result = str.split(/[A-z]/);
+        console.log(result);
+
+        str = "hello world";
+        result = str.search("hello");
+        console.log(str);
+
+        str = "hello abc aec afc";
+        result = str.search(/a[bdf]c/);
+        console.log(result);
+
+        str = "1a2b3c4d5e6f7";
+        result = str.match(/[A-z]/ig);
+        console.log(result);
+    //    match()只匹配第一个符合条件的字母，ig表示匹配全部
+
+        //将a替换成""
+        result = str.replace(/a/gi, "");
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
