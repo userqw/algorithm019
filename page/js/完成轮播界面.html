@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完成轮播界面</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 500px;
+            height: 300px;
+            margin: 50px auto;
+            background-color: yellow;
+            padding: 10px 0px;
+            overflow: hidden;
+        }
+        #imgList{
+            list-style: none;
+        /*    设置ul宽度足够容纳li的浮动*/
+            width: 900px;
+        }
+        #imgList li{
+            /*    设置图片中的li浮动*/
+            float: left;
+            margin: 10px;
+        }
+        #navDiv{
+            width: 200px;
+            float: left;
+            position: absolute;
+            bottom: 15px;
+        }
+        #navDiv a{
+        /*    设置超链接的浮动*/
+            float: left;
+        /*    设置超链接的宽和高*/
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            /*设置左右边距*/
+            margin: 0 5px;
+            /*设置透明度*/
+            opacity: 0.5;
+        }
+    /*    设置鼠标移入的效果*/
+        #navDiv a:hover{
+            background-color: deepskyblue;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var imgList = document.getElementById("imgList");
+            var imgArr = document.getElementsByTagName("img");
+            //动态设置imgList的宽度
+            imgList.style.width = 500 * imgArr.length+"px";
+        //    设置导航按钮居中
+            var outer = document.getElementById("outer");
+            var navDiv = document.getElementById("navDiv");
+            navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2+"px";
+
+        //  默认显示图片的索引
+            var index = 0;
+            var allA = document.getElementsByTagName("a");
+            //设置默认选中的效果
+            allA[index].style.backgroundColor = 'deepskyblue';
+
+        /*点击链接切换到指定的图片*/
+            for (let i = 0; i < allA.length; i++) {
+                //为每一个超链接添加index属性
+                allA[i].index = i;
+                allA[i].onclick = function () {
+                    index = this.index;
+                    //切换图片
+                    imgList.style.left = index * (-520)+"px";
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<!--创建一个外部的div，作为大的容器-->
+<div id="outer">
+<!--    创建一个ul 用于放置图片-->
+    <ul id="imgList">
+        <li>
+            <img src="../img/1.jpg" alt="">
+        </li>
+        <li>
+            <img src="../img/2.jpg" alt="">
+        </li>
+        <li>
+            <img src="../img/3.jpg" alt="">
+        </li>
+
+    </ul>
+
+    <div id="navDiv">
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+    </div>
+</div>
+</body>
+</html>

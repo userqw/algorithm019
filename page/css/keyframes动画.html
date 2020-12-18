@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>keyframes动画</title>
+    <style>
+        .container{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: run 1s linear;
+            /*其他属性*/
+            /*反向*/
+            /*animation-direction:reverse;*/
+            /*最后停留的位置（停在前面还是开始的地方）*/
+            /*animation-fill-mode: forwards;*/
+            /*播放次数*/
+            /*animation-iteration-count: infinite;*/
+            animation-play-state: paused;
+
+        }
+
+        @keyframes run {
+            0%{
+                width: 100px;
+            }
+            50%{
+                width: 200px;
+            }
+            100%{
+                width: 800px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container"></div>
+</body>
+</html>

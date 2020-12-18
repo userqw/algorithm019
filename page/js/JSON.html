@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <title>JSON</title>
+    <script>
+<!-- 创建一个JavaScript对象-->
+        var obj = {'name':'张三', 'age': '18'};
+        alert(obj)
+        /*json是特殊格式的字符串，JavaScript和java等任何语言都可以识别
+        * 并转换为任意语言中的对象，用于不同语言之间的交互
+        * 属性名必须双引号*/
+        //json对象
+        obj = '{"name":"李四"}';
+        alert(typeof obj);
+        obj =JSON.parse(obj);
+        alert(typeof obj);
+        //json数组
+        var arr = '[1,2,4,"hello"]';
+        /*将js对象转换为json对象*/
+        JSON.stringify()
+    </script>
+</head>
+<body>
+
+</body>
+</html>

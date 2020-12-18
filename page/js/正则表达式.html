@@ -8,6 +8,7 @@
          *var 变量 = new RegExp("正则表达式","匹配模式")
          */
         var reg = new RegExp("a");
+        reg = new RegExp("\\b"+cn+"\\b");
         console.log(reg.test("abc"));
         //字面量
         reg = /[A-z]/;

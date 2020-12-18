@@ -1,0 +1,187 @@
+13课字典树和并查集
+14课高级搜索
+15红黑树和AVL树
+
+
+字典树Trie
+1字典树的数据结构
+2字典树的核心思想
+3字典树的基本性质
+
+基本结构
+字典树，即Trie树，又称单词查找树或键树，是一种树形结构。
+典型应用是用于统计和排序大量的字符串（但不仅用于字符串）
+索引经常被搜索引擎系统用于文本词频统计
+
+优点：
+最大限度地减少无谓的字符串比较，查询效率比哈希表高
+
+基本性质
+1结点本身不存完整单词
+2从根节点到某一结点，路径上经过的字符连接起来，为该结点对应的字符串
+3每个节点的所有子节点路径代表的字符都不相同
+
+核心思想
+Trie树的核心思想是空间换时间
+利用字符串的公共前缀来降低查询查询时间的开销以达到提高效率的目的
+
+Trie树模板
+class Trie {
+    private boolean isEnd;
+    private Trie[] next;
+    /** Initialize your data structure here. */
+    public Trie() {
+        isEnd = false;
+        next = new Trie[26];
+    }
+
+    /** Inserts a word into the trie. */
+    public void insert(String word) {
+        if (word == null || word.length() == 0) return;
+        Trie curr = this;
+        char[] words = word.toCharArray();
+        for (int i = 0;i < words.length;i++) {
+            int n = words[i] - 'a';
+            if (curr.next[n] == null) curr.next[n] = new Trie();
+            curr = curr.next[n];
+        }
+        curr.isEnd = true;
+    }
+
+    /** Returns if the word is in the trie. */
+    public boolean search(String word) {
+        Trie node = searchPrefix(word);
+        return node != null && node.isEnd;
+    }
+
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    public boolean startsWith(String prefix) {
+        Trie node = searchPrefix(prefix);
+        return node != null;
+    }
+
+    private Trie searchPrefix(String word) {
+        Trie node = this;
+        char[] words = word.toCharArray();
+        for (int i = 0;i < words.length;i++) {
+            node = node.next[words[i] - 'a'];
+            if (node == null) return null;
+        }
+        return node;
+    }
+}
+
+
+
+并查集代码模板
+class UnionFind {
+	private int count = 0;
+	private int[] parent;
+	public UnionFind(int n) {
+		count = n;
+		parent = new int[n];
+		for (int i = 0; i < n; i++) {
+			parent[i] = i;
+		}
+	}
+	public int find(int p) {
+		while (p != parent[p]) {
+			parent[p] = parent[parent[p]];
+			p = parent[p];
+		}
+		return p;
+	}
+	public void union(int p, int q) {
+		int rootP = find(p);
+		int rootQ = find(q);
+		if (rootP == rootQ) return;
+		parent[rootP] = rootQ;
+		count--;
+	}
+}
+
+
+高级搜索
+剪枝
+
+回溯法采用试错的思想，它尝试分布区解决一个问题，在分布解决问题的过程中，
+当它通过尝试发现 现有的分布答案不能得到有效的正确的解答时，将取消上一步甚至是上几步的计算
+再通过其他的可能的分布解答再次尝试寻找问题的答案
+
+回溯法通常用最简单的递归方法来实现，在反复重复上述的步骤后可能出现两种情况：
+找到一个可能存在的正确的答案
+在尝试了所有可能得分步方法后宣布没有答案
+最坏情况下，回溯法会导致一次复杂度为指数时间的计算
+
+
+DFS代码模板
+public List<List<Integer>> levelOrder(TreeNode root){
+
+    List<List<Integer>> allResults = new ArrayList<>();
+    if(root == null)return allResults;
+    travel(root,0,allResults);
+    return res;
+}
+private void travel(TreeNode node,int level,List<List<Integer>>results){
+    if(results.size()==level){
+        results.add(new ArrayList<>());
+    }
+    results.get(level).add(root.val);
+    if(node.left !=null){
+        travel(node.left,level+1,results);
+    }
+    if(node.right!=null){
+        travel(node.right,level+1,results);
+    }
+}
+
+二叉搜索树binary search tree
+指一棵空树或者具有下列性质：
+1左子树上所有结点的值均小于它的根节点的值
+2右子树上所有结点的值均大于它的根节点的值
+3以此类推 左右子树也分别为二叉查找树
+中序遍历：升序排序
+
+
+AVL
+左子树高度-右子树高度的平衡因子： -1 0 1
+旋转操作
+1 左旋 2右旋 3左右旋 4 右左旋
+
+AVL总结
+1平衡二叉树
+2每个节点存balance factor = {-1,0,1}
+3四种旋转操作
+不足： 节点需要存储额外信息、且调整次数频繁
+
+
+红黑树
+红黑树是一种近似平衡的二叉搜索树，他能够确保任何一个节点的左右子树的高度差小于两倍
+
+性质
+每个节点要么是红色 要么是黑色
+根节点是黑色
+每个叶节点（NIL节点，空节点）是黑色的
+不能有相邻接的两个红色节点
+从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点
+
+关键性质
+从根到叶子的最大的可能路径不多于最短的可能路径的两倍长
+
+
+对比
+AVL 查询
+红黑树 插入删除
+
+
+
+
+
+
+
+
+
+
+
+
+

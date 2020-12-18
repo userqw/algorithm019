@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象</title>
+    <style>
+        #areaDiv{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+
+    </style>
+    <script>
+        window.onload = function(){
+            let areaDiv = document.getElementById('areaDiv');
+            let showMsg = document.getElementById('showMsg');
+            //鼠标移动显示信息
+            //事件对象：当事件的响应对象被触发时，浏览器传入一个实参传递进响应函数
+            //事件对象封装了当前事件的所有信息：鼠标移动、坐标、等动作监听
+            areaDiv.onmousemove = function (event) {
+                var x = event.clientX;
+                var y = event.clientY;
+                showMsg.innerHTML = "x=" + x + "," + "y=" + y;
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div id="areaDiv"></div>
+<div id="showMsg"></div>
+</body>
+</html>

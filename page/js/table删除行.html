@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table删除行</title>
+</head>
+<body>
+<table border="1" width="600" height="600" id="tb">
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+            <a href="javascript:;">delete</a>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+            <a href="javascript:;">delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+<script>
+    var allA = document.getElementsByTagName("a");
+    var tb = document.getElementById("td");
+    //为每个超链接绑定函数
+    for (let i = 0; i < allA.length; i++) {
+        allA[i].onclick = function () {
+            let b = confirm("确认删除？");
+            //this 谁调用就是谁，指的是当前点击的a
+            // a td tr
+            if (b) {
+                var tr = this.parentNode.parentNode;
+                tr.parentNode.removeChild(tr);
+            }
+        }
+    }
+</script>
+</html>

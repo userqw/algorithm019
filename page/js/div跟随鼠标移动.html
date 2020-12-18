@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div跟随鼠标移动</title>
+    <style>
+      
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            let box1 = document.getElementById('box1');
+            document.onmousemove = function (event) {
+                // var sl = document.documentElement.scrollLeft;
+                // var st = document.documentElement.scrollTop;
+                // //获取可见窗口的鼠标坐标
+                // var left = event.clientX;
+                // var top = event.clientY;
+                //获取整个页面的坐标,注意pageX的兼容性问题
+                var left = event.pageX;
+                var top = event.pageY;
+                box1.style.left = left+"px";
+                box1.style.top = top+"px";
+
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box1"></div>
+</body>
+</html>

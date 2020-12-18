@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>延时调用</title>
+    <script>
+<!--        开启一个定时器-->
+        var num = 1;
+        var timer =setInterval(function () {
+            console.log(num++);
+        },3000);
+        clearInterval(timer);
+
+    //    开启延时调用,不会立即执行而是3000以后执行，只执行一次
+        var timer1 = setTimeout(function () {
+            console.log(num++);
+
+        }, 3000);
+        clearTimeout(timer1);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

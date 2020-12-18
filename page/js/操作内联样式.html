@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作内联样式</title>
+
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red ;
+        }
+    /*    !important 表示优先级最高不可修改，因此尽量不要加！important*/
+    </style>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            var btn01 = document.getElementById("btn01");
+
+            btn01.onclick = function () {
+                box1.style.backgroundColor = "yellow";
+            }
+        };
+    </script>
+</head>
+<body>
+<button id="btn01">更换颜色</button>
+<div id="box1"></div>
+</body>
+</html>

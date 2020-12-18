@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition动画</title>
+    <style>
+        .container{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /*transition给div的宽添加动画（100变为800）
+            背景颜色3s内从红变为黄*/
+            transition: width 1s,background-color 3s;
+            /*匀速linear */
+            transition-timing-function: linear;
+        }
+        .container:hover{
+            width: 800px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div class="container"></div>
+</body>
+</html>

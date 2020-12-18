@@ -8,13 +8,15 @@ public class W6MainTest {
 //        command = command.replaceAll("\\((.*?)\\)", "$1");
 //
 //        System.out.println(command);
-        String s = "";
-        for (int i = 1; i <=3; i++) {
-            s += Integer.toBinaryString(i);
-        }
-        System.out.println(s);
-
-        System.out.println(Integer.parseInt(s, 2));
+//        String s = "";
+//        for (int i = 1; i <=3; i++) {
+//            s += Integer.toBinaryString(i);
+//        }
+//        System.out.println(s);
+//
+//        System.out.println(Integer.parseInt(s, 2));
+        int i = numberOfMatches(14);
+        System.out.println(i);
 
     }
     public int maxOperations(int[] nums, int k) {
@@ -42,5 +44,25 @@ public class W6MainTest {
         }
         return Integer.parseInt(s);
 
+    }
+
+
+
+    public static int numberOfMatches(int n) {
+        int res =0;
+        res=match(n,res);
+        return res;
+    }
+    public static int match(int teamCount,int res){
+        if(teamCount == 2)return ++res;
+        int flag =teamCount%2;
+        if(flag == 0){
+            teamCount =teamCount/2;
+            res+=teamCount+match(teamCount,res);
+        }else{
+            teamCount =(teamCount+1)/2;
+            res+=(teamCount-1)+match(teamCount,res);
+        }
+        return res;
     }
 }
